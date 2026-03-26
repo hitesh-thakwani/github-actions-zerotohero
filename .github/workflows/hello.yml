@@ -16,6 +16,6 @@ jobs:
         run: echo 'Hello Hitesh'
 
       - name: say hello to username
-        run: echo 'Hello $USER'
+        run: echo "Hello $USER"
         
   
