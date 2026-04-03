@@ -1,168 +1,226 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Cloud, Server, Code2, Rocket, Briefcase } from "lucide-react";
 
-export default function GlassPortfolio() {
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white overflow-hidden">
-      {/* Background Glow */}
-      <div className="absolute top-[-100px] left-[-100px] w-[400px] h-[400px] bg-purple-600 opacity-30 blur-[120px] rounded-full" />
-      <div className="absolute bottom-[-120px] right-[-120px] w-[400px] h-[400px] bg-blue-600 opacity-30 blur-[120px] rounded-full" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hitesh Thakwani | DevOps Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
 
-      {/* Navbar */}
-      <nav className="sticky top-0 z-50 backdrop-blur-xl bg-white/5 border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <h1 className="text-xl font-semibold tracking-wide">Hitesh.dev</h1>
-          <div className="flex gap-6 text-sm text-slate-300">
-            <a className="hover:text-white transition">Home</a>
-            <a className="hover:text-white transition">Skills</a>
-            <a className="hover:text-white transition">Projects</a>
-            <a className="hover:text-white transition">Contact</a>
-          </div>
-        </div>
-      </nav>
+    body {
+      background: linear-gradient(135deg,#020617,#0f172a,#020617);
+      color: white;
+      overflow-x: hidden;
+    }
 
-      {/* Hero Section */}
-      <section className="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-12 items-center">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h1 className="text-5xl font-bold leading-tight mb-6">
-            DevOps & Cloud Engineer
-            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"> Building Scalable Systems</span>
-          </h1>
-          <p className="text-slate-300 mb-8 text-lg">
-            I design CI/CD pipelines, automate infrastructure, and build cloud-native
-            solutions. Focused on transitioning into MLOps & AIOps architecture.
-          </p>
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
 
-          <div className="flex gap-4">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 py-3 rounded-2xl bg-gradient-to-r from-blue-500 to-purple-600 shadow-xl"
-            >
-              View Projects
-            </motion.button>
+    /* Glass effect */
+    .glass {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      transition: 0.3s ease;
+    }
 
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              className="px-6 py-3 rounded-2xl border border-white/20 backdrop-blur-lg bg-white/5"
-            >
-              Download Resume
-            </motion.button>
-          </div>
-        </motion.div>
+    .glass:hover {
+      transform: translateY(-8px) scale(1.02);
+      background: rgba(255,255,255,0.08);
+    }
 
-        {/* Glass Card */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="backdrop-blur-xl bg-white/5 border border-white/10 p-8 rounded-3xl shadow-2xl"
-        >
-          <h3 className="text-xl font-semibold mb-4">Quick Overview</h3>
-          <ul className="space-y-3 text-slate-300">
-            <li>🚀 DevOps Engineer</li>
-            <li>☁️ Cloud & Kubernetes</li>
-            <li>⚡ CI/CD Automation</li>
-            <li>🎯 MLOps & AIOps Focus</li>
-          </ul>
-        </motion.div>
-      </section>
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(10px);
+      padding: 15px 0;
+      z-index: 100;
+    }
 
-      {/* Skills */}
-      <section className="max-w-7xl mx-auto px-6 py-20">
-        <h2 className="text-3xl font-bold mb-12">Skills</h2>
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {[
-            { icon: <Server />, title: "DevOps", desc: "CI/CD, Jenkins, GitHub Actions, Automation" },
-            { icon: <Cloud />, title: "Cloud", desc: "AWS, Azure, Scalable Architecture" },
-            { icon: <Code2 />, title: "Tools", desc: "Docker, Kubernetes, Terraform, Linux" },
-          ].map((skill, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="backdrop-blur-xl bg-white/5 border border-white/10 p-6 rounded-3xl shadow-xl hover:bg-white/10 transition"
-            >
-              <div className="mb-4">{skill.icon}</div>
-              <h3 className="text-xl font-semibold mb-2">{skill.title}</h3>
-              <p className="text-slate-400">{skill.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+    nav a {
+      color: #cbd5f5;
+      margin-left: 20px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
 
-      {/* Projects */}
-      <section className="max-w-7xl mx-auto px-6 py-20">
-        <h2 className="text-3xl font-bold mb-12">Featured Projects</h2>
+    nav a:hover {
+      color: white;
+    }
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {[
-            "End-to-End CI/CD Pipeline",
-            "Kubernetes Monitoring Stack",
-            "Terraform Cloud Automation",
-            "MLOps Deployment Pipeline",
-          ].map((project, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ scale: 1.03 }}
-              className="group backdrop-blur-xl bg-white/5 border border-white/10 p-8 rounded-3xl shadow-xl"
-            >
-              <div className="flex justify-between items-center">
-                <h3 className="text-xl font-semibold">{project}</h3>
-                <Rocket className="group-hover:rotate-12 transition" />
-              </div>
-              <p className="text-slate-400 mt-3">
-                Production-ready DevOps architecture with automation and monitoring.
-              </p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      padding: 100px 0;
+      align-items: center;
+    }
 
-      {/* Experience */}
-      <section className="max-w-7xl mx-auto px-6 py-20">
-        <h2 className="text-3xl font-bold mb-12">Experience</h2>
+    .hero h1 {
+      font-size: 48px;
+      line-height: 1.2;
+    }
 
-        <motion.div
-          whileHover={{ scale: 1.01 }}
-          className="backdrop-blur-xl bg-white/5 border border-white/10 p-8 rounded-3xl shadow-xl"
-        >
-          <div className="flex items-center gap-3 mb-4">
-            <Briefcase />
-            <h3 className="text-xl font-semibold">DevOps Engineer</h3>
-          </div>
-          <p className="text-slate-400">
-            Working on CI/CD automation, containerization, cloud deployment and
-            infrastructure reliability improvements.
-          </p>
-        </motion.div>
-      </section>
+    .gradient {
+      background: linear-gradient(90deg,#60a5fa,#a78bfa);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
 
-      {/* Contact */}
-      <section className="max-w-7xl mx-auto px-6 py-20">
-        <h2 className="text-3xl font-bold mb-12">Contact</h2>
+    .btn {
+      padding: 12px 25px;
+      border-radius: 30px;
+      border: none;
+      margin-right: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
 
-        <div className="flex flex-wrap gap-6">
-          {[Github, Linkedin, Mail].map((Icon, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ y: -5, scale: 1.05 }}
-              className="backdrop-blur-xl bg-white/5 border border-white/10 p-6 rounded-2xl shadow-lg cursor-pointer"
-            >
-              <Icon />
-            </motion.div>
-          ))}
-        </div>
-      </section>
+    .btn-primary {
+      background: linear-gradient(90deg,#3b82f6,#8b5cf6);
+      color: white;
+    }
 
-      <footer className="text-center py-10 text-slate-500">
-        © 2026 Hitesh Thakwani • DevOps Engineer
-      </footer>
+    .btn-outline {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: white;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .grid {
+      display: grid;
+      gap: 25px;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    }
+
+    .card {
+      padding: 25px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      opacity: 0.7;
+    }
+
+    @media(max-width:768px){
+      .hero{
+        grid-template-columns:1fr;
+        text-align:center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <h2>Hitesh.dev</h2>
+    <div>
+      <a href="#">Home</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
     </div>
-  );
-}
+  </div>
+</nav>
 
+<section class="hero container">
+  <div>
+    <h1>
+      DevOps & Cloud Engineer <br>
+      <span class="gradient">Building Scalable Systems</span>
+    </h1>
+    <p style="margin:20px 0;color:#cbd5f5">
+      DevOps engineer focused on CI/CD, Kubernetes, cloud automation and transitioning into MLOps & AIOps.
+    </p>
+
+    <button class="btn btn-primary">View Projects</button>
+    <button class="btn btn-outline">Download Resume</button>
+  </div>
+
+  <div class="glass card">
+    <h3>Quick Overview</h3>
+    <p>🚀 DevOps Engineer</p>
+    <p>☁️ Cloud & Kubernetes</p>
+    <p>⚡ CI/CD Automation</p>
+    <p>🎯 MLOps & AIOps</p>
+  </div>
+</section>
+
+<section id="skills" class="container">
+  <h2>Skills</h2>
+  <div class="grid grid-3">
+    <div class="glass card">
+      <h3>DevOps</h3>
+      <p>Jenkins, CI/CD, Automation</p>
+    </div>
+    <div class="glass card">
+      <h3>Cloud</h3>
+      <p>AWS, Azure, Architecture</p>
+    </div>
+    <div class="glass card">
+      <h3>Tools</h3>
+      <p>Docker, Kubernetes, Terraform</p>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="container">
+  <h2>Projects</h2>
+  <div class="grid grid-2">
+    <div class="glass card">End-to-End CI/CD Pipeline</div>
+    <div class="glass card">Kubernetes Monitoring Stack</div>
+    <div class="glass card">Terraform Cloud Automation</div>
+    <div class="glass card">MLOps Deployment Pipeline</div>
+  </div>
+</section>
+
+<section id="contact" class="container">
+  <h2>Contact</h2>
+  <div class="grid grid-3">
+    <div class="glass card">GitHub</div>
+    <div class="glass card">LinkedIn</div>
+    <div class="glass card">Email</div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Hitesh Thakwani | DevOps Engineer
+</footer>
+
+</body>
+</html>
