@@ -1,3 +1,161 @@
-<h1>This is a reference web page</h1>
-<hr>
-<h2>Welcome to the Reference Section</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Professional Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #64748b;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #1e293b;
+            --accent-color: #3b82f6;
+        }
+
+        .dark-mode {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f1f5f9;
+            --accent-color: #60a5fa;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: var(--card-bg);
+            padding: 3rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 2rem auto;
+            padding: 0 20px;
+        }
+
+        section {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 { color: var(--primary-color); font-size: 2.5rem; margin: 0; }
+        h2 { border-left: 5px solid var(--primary-color); padding-left: 15px; margin-bottom: 1.5rem; }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        button {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        button:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .stat-box {
+            font-size: 1.2rem;
+            background: rgba(37, 99, 235, 0.1);
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        #visitor-count { color: var(--primary-color); font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 id="user-name">Your Name</h1>
+        <p id="user-title">Full Stack Developer | UI/UX Enthusiast</p>
+        <div class="btn-group">
+            <button onclick="toggleDarkMode()">🌓 Toggle Theme</button>
+            <button onclick="updateProfile()">✏️ Edit Profile</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <p id="about-text">Passionate developer dedicated to creating intuitive and powerful web experiences. I focus on clean code and user-centric design.</p>
+        </section>
+
+        <section id="stats">
+            <h2>Analytics</h2>
+            <div class="stat-box">
+                Page Views: <span id="visitor-count">0</span>
+            </div>
+            <div style="margin-top: 1rem;">
+                <button onclick="resetViews()">Reset Stats</button>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Let's Connect</h2>
+            <p>Direct Email: <strong id="user-email">hello@yourdomain.com</strong></p>
+            <button onclick="copyEmail()">📋 Copy Email Address</button>
+        </section>
+    </div>
+
+    <script>
+        // 1. Visitor Counter using LocalStorage
+        let views = localStorage.getItem('page_views') || 0;
+        views++;
+        localStorage.setItem('page_views', views);
+        document.getElementById('visitor-count').innerText = views;
+
+        // 2. Interactive Theme Switcher
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        // 3. Dynamic Profile Editor
+        function updateProfile() {
+            const name = prompt("What is your name?", document.getElementById('user-name').innerText);
+            const title = prompt("What is your professional title?", document.getElementById('user-title').innerText);
+            
+            if (name) document.getElementById('user-name').innerText = name;
+            if (title) document.getElementById('user-title').innerText = title;
+        }
+
+        // 4. Utility: Copy to Clipboard
+        function copyEmail() {
+            const email = document.getElementById('user-email').innerText;
+            navigator.clipboard.writeText(email).then(() => {
+                alert("Email copied to clipboard!");
+            });
+        }
+
+        // 5. Utility: Reset Analytics
+        function resetViews() {
+            localStorage.setItem('page_views', 0);
+            document.getElementById('visitor-count').innerText = 0;
+        }
+    </script>
+</body>
+</html>
