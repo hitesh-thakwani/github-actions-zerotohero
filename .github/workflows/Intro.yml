@@ -1,0 +1,17 @@
+name: Introduction
+
+on: 
+    push:
+      branches: [main]
+
+jobs:
+
+    Intro:
+        runs-on: ubuntu-latest
+        steps:
+           - name: Intro to CICD
+             run : echo "this is CICD pipeline for $USER"
+             
+            - name: dependency check
+              run: docker --version && python --version
+
