@@ -9,8 +9,8 @@ jobs:
     Intro:
         runs-on: ubuntu-latest
     steps:
-      - name: Intro to CICD
+       - name: Intro to CICD
         run: echo "this is CICD pipeline for $USER"
-      - name: dependency check
+       - name: dependency check
         run: docker --version && python --version
 
