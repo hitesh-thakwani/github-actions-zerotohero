@@ -8,23 +8,23 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: checkout code
-              run: "Checking out code on Github"
+              run: echo "Checking out code on Github"
 
     build: 
         runs-on: ubuntu-latest
         steps: 
             - name: Build Artifacts
-              run : " Building Artifacts from Docker"
+              run : echo "Building Artifacts from Docker"
 
     test:
         runs-on: ubuntu-latest
         steps:
             - name: "Testing Artifacts"
-              run: "Run the Docker Tests" 
+              run:  echo "Run the Docker Tests" 
 
     deploy: 
         runs-on: ubuntu-latest
         steps:
             - name: "Deploying to Prod"
-              run: " Deploying Docker App to Prod"
+              run: echo "Deploying Docker App to Prod"
         
