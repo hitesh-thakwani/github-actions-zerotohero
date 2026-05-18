@@ -1,0 +1,30 @@
+name: CI-CD
+
+on: 
+    workflow_dispatch: 
+
+jobs:
+    code:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout code
+              run: "Checking out code on Github"
+
+    build: 
+        runs-on: ubuntu-latest
+        steps: 
+            - name: Build Artifacts
+              run : " Building Artifacts from Docker"
+
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: "Testing Artifacts"
+              run: "Run the Docker Tests" 
+
+    deploy: 
+        runs-on: ubuntu-latest
+        steps:
+            - name: "Deploying to Prod"
+              run: " Deploying Docker App to Prod"
+        
