@@ -11,18 +11,21 @@ jobs:
               run: echo "Checking out code on Github"
 
     build: 
+        needs: [code]
         runs-on: ubuntu-latest
         steps: 
             - name: Build Artifacts
               run : echo "Building Artifacts from Docker"
 
     test:
+        needs: [build]
         runs-on: ubuntu-latest
         steps:
             - name: "Testing Artifacts"
               run:  echo "Run the Docker Tests" 
 
     deploy: 
+        needs: [test,build,code]
         runs-on: ubuntu-latest
         steps:
             - name: "Deploying to Prod"
