@@ -1,6 +1,6 @@
 services:
 
    web: 
-    image: ${DOCKERHUB_USER}/github-actions-app:main
+    image: 11054352/github-actions-app:main
     ports:
       - "80:5000"
